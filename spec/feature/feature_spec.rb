@@ -12,4 +12,12 @@ describe 'feature test' do
     expect(page).to have_content 'Tom Vs. Chris'
   end
 
+it 'should display the players hit points' do
+  visit('localhost:9292')
+  fill_in 'player1', with: 'Tom'
+  fill_in 'player2', with: 'Chris'
+  click_button('Submit')
+  expect(page).to have_content 'Chris: 150'
+end
+
 end
