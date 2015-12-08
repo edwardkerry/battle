@@ -2,7 +2,6 @@ require 'capybara'
 require 'selenium-webdriver'
 include Capybara::DSL
 Capybara.default_driver= :selenium
-session = Capybara::Session.new :selenium
 
 describe 'feature test' do
   it 'should display the players name' do
