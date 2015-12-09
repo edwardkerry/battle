@@ -38,7 +38,6 @@ class Game
     else
       @whos_go = player1
       @not_whos_go = player2
-
     end
   end
 
@@ -50,8 +49,8 @@ class Game
     not_whos_go.name
   end
 
-  def player_whos_turn_hug_points
-    whos_go.hug_points
+  def player_not_whos_turn_hug_points
+    not_whos_go.hug_points
   end
 
 end

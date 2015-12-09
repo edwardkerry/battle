@@ -15,7 +15,7 @@ describe 'feature test' do
     expect(page).to have_content 'Bob: 150HP'
   end
 
-  # As Player 1,CRS
+  # As Player 1,
   # So I can win a game of Battle,
   # I want to attack Player 2, and I want to get a confirmation
 
