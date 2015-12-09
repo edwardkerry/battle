@@ -10,9 +10,8 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    @player2_HP = $player2.hug_points
+    @player1 = $player1
+    @player2 = $player2
     erb(:play)
   end
 
@@ -24,9 +23,9 @@ class Battle < Sinatra::Base
   end
 
   get '/hug_player_2' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    $player2.reduce_hug_points
+    @player1 = $player1
+    @player2 = $player2
+    @player1.hug(@player2)
     erb(:hug_player_2)
   end
 

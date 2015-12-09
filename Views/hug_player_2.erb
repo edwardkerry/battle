@@ -1,5 +1,7 @@
-<h1><%=@player1%> has hugged <%=@player2%>!</h>
-<br>
+<h1><%=@player1.name%> has hugged <%=@player2.name%>!</h1>
+
+<h2><%=@player2.name%>: <%=@player2.hug_points%>HP</h2>
+
 <form action='/play'>
   <input type='submit' value='GO GET ANOTHER HUG'/>
 </form>

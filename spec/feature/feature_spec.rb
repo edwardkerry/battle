@@ -32,7 +32,6 @@ describe 'feature test' do
   it 'should reduce p2\'s hit points after a hug' do
     sign_in_and_play
     click_button('HUG PLAYER 2!')
-    click_button('GO GET ANOTHER HUG')
     expect(page).to have_content 'Bob: 130HP'
   end
 end
