@@ -19,13 +19,14 @@ class Battle < Sinatra::Base
     p params
     $player1 = Player.new(params[:player1])
     $player2 = Player.new(params[:player2])
+    $game = Game.new
     redirect '/play'
   end
 
-  get '/hug_player_2' do
+  get '/hug_player_2' do #/attack
     @player1 = $player1
     @player2 = $player2
-    @player1.hug(@player2)
+    $game.hug(@player2)
     erb(:hug_player_2)
   end
 

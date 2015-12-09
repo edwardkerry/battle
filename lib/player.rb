@@ -2,8 +2,7 @@ class Player
 
   DEFAULT_HUG_POINTS = 150
 
-
-  attr_reader :name, :hug_points
+  attr_reader :name, :hug_points, :game
 
   def initialize(name)
     @name = name
@@ -14,7 +13,4 @@ class Player
     @hug_points -= 20
   end
 
-  def hug(player)
-    player.reduce_hug_points
-  end
 end

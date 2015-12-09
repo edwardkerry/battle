@@ -22,10 +22,5 @@ describe Player do
     end
   end
 
-  describe '#hug' do
-    it 'hugs the other player' do
-      expect(bob).to receive(:reduce_hug_points)
-      vic.hug(bob)
-    end
-  end
+
 end
