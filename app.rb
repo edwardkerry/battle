@@ -26,7 +26,7 @@ class Battle < Sinatra::Base
   get '/hug' do
     @game = $game
     @game.hug(@game.not_whos_go)
-    if @game.player_not_whos_turn_hug_points <= 0
+    if @game.game_over?
       redirect '/lose'
     end
     erb(:hug)

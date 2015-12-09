@@ -2,8 +2,11 @@ require 'game'
 
 describe Game do
   subject(:game) {described_class.new(vic, bob)}
-  let(:vic) {double(:player1)}
-  let(:bob) {double(:player2)}
+  let(:finished_game) {described_class.new(vic, dead_guy)}
+  let(:vic) {double(:player1, hug_points: 150)}
+  let(:bob) {double(:player2, hug_points: 150)}
+  let(:dead_guy) {double(:player, hug_points: 0)}
+
 
   describe '#player1' do
     it 'retrieves the first player' do
@@ -43,6 +46,17 @@ describe Game do
         expect(game.whos_go).to eq vic
       end
     end
+  end
+
+  describe '#game_over' do
+    it 'should return false if no-one is at 0HP' do
+      expect(game.game_over?).to be false
+    end
+
+    it 'should return true if a player is at 0HP' do
+      expect(finished_game.game_over?).to be true
+    end
+    
   end
 
 

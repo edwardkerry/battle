@@ -53,4 +53,10 @@ class Game
     not_whos_go.hug_points
   end
 
+  def game_over?
+    return true if player1_hug_points <= 0
+    return true if player2_hug_points <= 0
+    false
+  end
+
 end
