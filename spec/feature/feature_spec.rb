@@ -84,5 +84,43 @@ describe 'feature test' do
     expect(page).to have_content 'Vic: 130HP'
   end
 
+  # As a Player,
+  # So I can Lose a game of Battle,
+  # I want to see a 'Lose' message if I reach 0HP first
+
+  it 'should allow a player to lose if they reach 0HP' do
+    sign_in_and_play
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    expect(page).to have_content 'Vic is the winner! Bob has been hugged to DEATH!'
+  end
+
 
 end

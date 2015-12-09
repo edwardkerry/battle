@@ -23,10 +23,18 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
-  get '/hug' do #/attack
+  get '/hug' do
     @game = $game
     @game.hug(@game.not_whos_go)
+    if @game.player_not_whos_turn_hug_points <= 0
+      redirect '/lose'
+    end
     erb(:hug)
+  end
+
+  get '/lose' do
+    @game = $game
+    erb(:lose)
   end
 
   post '/switch_turns' do
