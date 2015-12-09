@@ -49,6 +49,14 @@ describe 'feature test' do
     click_button('DO A HUG!')
     click_button('GO GET ANOTHER HUG')
     expect(page).to have_content 'Get ready BOB! It\'s your turn to hug!'
+  end
 
+  # As Player 1,
+  # So I can see how close I am to losing,
+  # I want to see my own hit points
+
+  it 'should show P1 hug points' do
+    sign_in_and_play
+    expect(page).to have_content 'Vic: 150HP'
   end
 end

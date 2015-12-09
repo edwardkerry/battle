@@ -22,6 +22,10 @@ class Game
     player2.name
   end
 
+  def player1_hug_points
+    @player1.hug_points
+  end
+
   def player2_hug_points
     @player2.hug_points
   end
