@@ -24,4 +24,15 @@ describe 'feature test' do
     click_button('HUG PLAYER 2!')
     expect(page).to have_content 'Vic has hugged Bob!'
   end
+
+  # As Player 1,
+  # So I can start to win a game of Battle,
+  # I want my attack to reduce Player 2's HP
+
+  it 'should reduce p2\'s hit points after a hug' do
+    sign_in_and_play
+    click_button('HUG PLAYER 2!')
+    click_button('GO GET ANOTHER HUG')
+    expect(page).to have_content 'Bob: 130HP'
+  end
 end
