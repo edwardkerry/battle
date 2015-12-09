@@ -22,7 +22,7 @@ describe 'feature test' do
   it 'should allow P1 to hug P2 and get confirmation ' do
     sign_in_and_play
     click_button('DO A HUG!')
-    expect(page).to have_content 'Vic has hugged Bob!'
+    expect(page).to have_content 'VIC HAS DONE A LOVELY HUG!'
   end
 
   # As Player 1,
@@ -59,4 +59,30 @@ describe 'feature test' do
     sign_in_and_play
     expect(page).to have_content 'Vic: 150HP'
   end
+
+  # As Player 1,
+  # So I can lose a game of Battle,
+  # I want Player 2 to attack me, and I want to get a confirmation
+
+  it 'should let P1 be hugged with a confirmation' do
+    sign_in_and_play
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    expect(page).to have_content 'BOB HAS DONE A LOVELY HUG!'
+  end
+
+  # As Player 1,
+  # So I can start to lose a game of Battle,
+  # I want Player 2's attack to reduce my HP
+
+  it 'should allow P2\s hugs to reduce P1\'s hug points' do
+    sign_in_and_play
+    click_button('DO A HUG!')
+    click_button('GO GET ANOTHER HUG')
+    click_button('DO A HUG!')
+    expect(page).to have_content 'Vic: 130HP'
+  end
+
+
 end

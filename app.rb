@@ -25,7 +25,7 @@ class Battle < Sinatra::Base
 
   get '/hug' do #/attack
     @game = $game
-    @game.hug(@game.player2)
+    @game.hug(@game.not_whos_go)
     @game.switch_turns
     erb(:hug)
   end

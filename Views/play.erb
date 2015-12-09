@@ -1,6 +1,6 @@
 <h1><%= @game.player1_name %> Vs. <%= @game.player2_name %></h1>
 
-<h1>Get ready <%= @game.player_whos_turn %>! It's your turn to hug!</h1>
+<h1>Get ready <%= @game.player_whos_turn.upcase %>! It's your turn to hug!</h1>
 
 <h2><%= @game.player1_name %>: <%=@game.player1_hug_points%>HP</h2>
 <h2><%= @game.player2_name %>: <%=@game.player2_hug_points%>HP</h2>
