@@ -23,10 +23,11 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
-  get '/hug_player_2' do #/attack
+  get '/hug' do #/attack
     @game = $game
     @game.hug(@game.player2)
-    erb(:hug_player_2)
+    @game.switch_turns
+    erb(:hug)
   end
 
   # start the server if ruby file executed directly
