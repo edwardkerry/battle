@@ -1,6 +1,5 @@
 require 'capybara'
 require_relative '../../app.rb'
-
 include Capybara::DSL
 
 describe 'user stories' do
@@ -23,6 +22,7 @@ describe 'user stories' do
 
     scenario 'attack reduces HP' do
       sign_in_and_play
+      allow(Kernel).to receive(:rand).and_return(10)
       attack_and_return
       expect(page).to have_content('50/60 HP')
     end
@@ -55,6 +55,7 @@ describe 'user stories' do
     scenario 'shows when a player wins/loses' do
       sign_in_and_play
       11.times do
+        allow(Kernel).to receive(:rand).and_return(10)
         attack_and_return
       end
       expect(page).to have_content('Tony beat John')
