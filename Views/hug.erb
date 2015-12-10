@@ -1,6 +1,15 @@
-<h1><%=@game.player_whos_turn.upcase%> HAS DONE A LOVELY HUG! </h1>
 
-<h2><%=@game.player_not_whos_turn%>: <%=@game.player_not_whos_turn_hug_points%>HP</h2>
+<% if @game.whos_go == @game.player1 %>
+  <h1><%=@game.player1_name.upcase%> HAS DONE A LOVELY HUG! </h1>
+  <h2><%=@game.player2_name%>: <%=@game.player2_hug_points%>HP</h2>
+<% else %>
+  <h1><%=@game.player2_name.upcase%> HAS DONE A LOVELY HUG! </h1>
+  <h2><%=@game.player1_name%>: <%=@game.player1_hug_points%>HP</h2>
+<% end %>
+
+<!-- <% if @game.whos_go == @game.player2 %>
+  <meta http-equiv="refresh" content="3;url=/switch_turns"/>
+<% end %> -->
 
 <form action='/switch_turns' method='post'>
   <input type='submit' value='GO GET ANOTHER HUG'/>

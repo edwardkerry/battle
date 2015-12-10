@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative './lib/player'
+require_relative './lib/comp_player'
 require_relative './lib/game'
 
 class Battle < Sinatra::Base
@@ -16,16 +17,19 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    p params
     player1 = Player.new(params[:player1])
-    player2 = Player.new(params[:player2])
+    if params[:player2] == ''
+      player2 = CompPlayer.new('Meccahugger')
+    else
+      player2 = Player.new(params[:player2])
+    end
     $game = Game.new(player1, player2)
     redirect '/play'
   end
 
   post '/hug' do
     @game = $game
-    @game.hug(@game.not_whos_go)
+    @game.hug(@game.the_other_player)
     if @game.game_over?
       redirect '/lose'
     else
@@ -46,8 +50,15 @@ class Battle < Sinatra::Base
   post '/switch_turns' do
     @game = $game
     @game.switch_turns
-    redirect '/play'
+    if @game.whos_go.computer
+      @game.hug(@game.the_other_player)
+      redirect '/lose' if @game.game_over?
+      redirect '/hug'
+    else
+      redirect '/play'
+    end
   end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0

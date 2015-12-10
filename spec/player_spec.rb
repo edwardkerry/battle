@@ -1,8 +1,13 @@
 require 'player'
 
 describe Player do
+
   subject(:bob) {described_class.new("Bob")}
   subject(:vic) {described_class.new("Vic")}
+
+  before do
+    allow(Kernel).to receive(:rand).and_return(20)
+  end
 
   describe '#name' do
     it 'returns the name of the player' do
@@ -23,6 +28,11 @@ describe Player do
     end
   end
 
+  describe '#is a computer' do
+    it 'should be a human' do
+      expect(bob.computer).to eq false
+    end
+  end
 
 
 end
