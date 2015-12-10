@@ -10,7 +10,7 @@ class Player
   end
 
   def reduce_hug_points
-    @hug_points -= 20
+    @hug_points -= Kernel.rand(20)
   end
 
 end

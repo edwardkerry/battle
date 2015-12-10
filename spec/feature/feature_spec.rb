@@ -1,11 +1,8 @@
-require 'capybara'
-require 'selenium-webdriver'
-include Capybara::DSL
 Capybara.default_driver= :selenium
 
 describe 'feature test' do
 
-  before do
+  before :all do
     allow(Kernel).to receive(:rand).and_return(20)
   end
 
@@ -102,5 +99,16 @@ describe 'feature test' do
     expect(page).to have_content 'Vic is the winner! Bob has been hugged to DEATH!'
   end
 
+  # As a Player,
+  # So I can play a suspenseful game of Battle,
+  # I want all Attacks to deal a random amount of damage
 
+  # feature 'random damage' do
+  #   it 'should deal a random amount of damage' do
+  #     sign_in_and_play
+  #     allow(Kernel).to receive(:rand).and_return(5)
+  #     click_button('DO A HUG!')
+  #     expect(page).to have_content 'Bob: 145HP'
+  #   end
+  # end
 end

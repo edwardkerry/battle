@@ -18,9 +18,11 @@ describe Player do
 
   describe '#reduce_hug_points' do
     it 'reduces the players hug points' do
-      expect{bob.reduce_hug_points}.to change {bob.hug_points}.by(-20)
+      allow(Kernel).to receive(:rand).and_return(13)
+      expect{bob.reduce_hug_points}.to change {bob.hug_points}.by(-13)
     end
   end
+
 
 
 end
