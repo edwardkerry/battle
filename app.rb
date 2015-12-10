@@ -25,7 +25,7 @@ class Battle < Sinatra::Base
 
   post '/hug' do
     @game = $game
-    @game.hug(@game.not_whos_go)
+    @game.hug(@game.the_other_player)
     if @game.game_over?
       redirect '/lose'
     else

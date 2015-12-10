@@ -2,13 +2,13 @@ class Game
 
 # WORK OUT HOW TO USE FORWARDABLE AT SOME POINT INSTEAD OF THE NAME METHODS.
 
-  attr_reader :player1, :player2, :whos_go, :not_whos_go
+  attr_reader :player1, :player2, :whos_go, :the_other_player
 
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
     @whos_go = player1
-    @not_whos_go = player2
+    @the_other_player = player2
   end
 
   def hug(player)
@@ -34,23 +34,11 @@ class Game
   def switch_turns
     if whos_go == player1
       @whos_go = player2
-      @not_whos_go = player1
+      @the_other_player = player1
     else
       @whos_go = player1
-      @not_whos_go = player2
+      @the_other_player = player2
     end
-  end
-
-  def player_whos_turn
-    whos_go.name
-  end
-
-  def player_not_whos_turn
-    not_whos_go.name
-  end
-
-  def player_not_whos_turn_hug_points
-    not_whos_go.hug_points
   end
 
   def game_over?
@@ -58,5 +46,7 @@ class Game
     return true if player2_hug_points <= 0
     false
   end
+
+
 
 end

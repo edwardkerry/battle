@@ -1,3 +1,9 @@
+<% if @game.whos_go == @game.player1 %>
 <h1>
-  <%= @game.player_whos_turn %> is the winner! <%= @game.player_not_whos_turn %> has been hugged to DEATH!
+  <%= @game.player1_name %> is the winner! <%= @game.player2_name %> has been hugged to DEATH!
 </h1>
+<% else %>
+<h1>
+  <%= @game.player2_name %> is the winner! <%= @game.player1_name %> has been hugged to DEATH!
+</h1>
+<% end %>
