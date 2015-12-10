@@ -1,8 +1,13 @@
 require 'player'
 
 describe Player do
+
   subject(:bob) {described_class.new("Bob")}
   subject(:vic) {described_class.new("Vic")}
+
+  before do
+    allow(Kernel).to receive(:rand).and_return(20)
+  end
 
   describe '#name' do
     it 'returns the name of the player' do

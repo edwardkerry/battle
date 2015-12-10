@@ -18,6 +18,7 @@ class Battle < Sinatra::Base
   post '/names' do
     p params
     player1 = Player.new(params[:player1])
+    params[:player2] = 'Meccahugger' if params[:player2] == ''
     player2 = Player.new(params[:player2])
     $game = Game.new(player1, player2)
     redirect '/play'
@@ -48,6 +49,7 @@ class Battle < Sinatra::Base
     @game.switch_turns
     redirect '/play'
   end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0

@@ -9,6 +9,10 @@
 <h2><%= @game.player1_name %>: <%=@game.player1_hug_points%>HP</h2>
 <h2><%= @game.player2_name %>: <%=@game.player2_hug_points%>HP</h2>
 
+<!-- <% if @game.whos_go == @game.player2 %>
+  <meta http-equiv="refresh" content="3;url=/mecca_hug" />
+<% end %> -->
+
 <form action='/hug' method='post'>
   <input type="submit" value="DO A HUG!"/>
 </form>

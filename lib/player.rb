@@ -1,3 +1,4 @@
+require 'pry'
 class Player
 
   DEFAULT_HUG_POINTS = 150
@@ -10,7 +11,8 @@ class Player
   end
 
   def reduce_hug_points
-    @hug_points -= 20
+    binding.pry
+    @hug_points -= Kernel.rand(20)
   end
 
 end
