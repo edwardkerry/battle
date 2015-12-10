@@ -103,7 +103,7 @@ class Battle < Sinatra::Base
     @game = $game
     @game.switch_turns
     if @game.whos_go.computer
-      @game.hug(@game.the_other_player)
+      @game.attach.hug(@game.the_other_player)
       redirect '/lose' if @game.game_over?
       redirect '/hug'
     else

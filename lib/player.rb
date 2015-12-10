@@ -11,8 +11,8 @@ class Player
     @computer = false
   end
 
-  def reduce_hug_points
-    @hug_points -= Kernel.rand(60)
+  def reduce_hug_points(amount)
+    @hug_points -= amount
   end
 
 end
