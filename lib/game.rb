@@ -2,17 +2,14 @@ class Game
 
 # WORK OUT HOW TO USE FORWARDABLE AT SOME POINT INSTEAD OF THE NAME METHODS.
 
-  attr_reader :player1, :player2, :whos_go, :the_other_player
+  attr_reader :player1, :player2, :whos_go, :the_other_player, :attach
 
-  def initialize(player1, player2)
+  def initialize(player1, player2, attach)
     @player1 = player1
     @player2 = player2
     @whos_go = player1
     @the_other_player = player2
-  end
-
-  def hug(player)
-    player.reduce_hug_points
+    @attach = attach
   end
 
   def player1_name

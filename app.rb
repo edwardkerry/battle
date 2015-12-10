@@ -2,6 +2,8 @@ require 'sinatra/base'
 require_relative './lib/player'
 require_relative './lib/comp_player'
 require_relative './lib/game'
+require_relative './lib/attach'
+
 
 class Battle < Sinatra::Base
 
@@ -23,13 +25,63 @@ class Battle < Sinatra::Base
     else
       player2 = Player.new(params[:player2])
     end
-    $game = Game.new(player1, player2)
+    $game = Game.new(player1, player2, Attach.new)
     redirect '/play'
   end
 
   post '/hug' do
     @game = $game
-    @game.hug(@game.the_other_player)
+    @game.attach.hug(@game.the_other_player)
+    if @game.game_over?
+      redirect '/lose'
+    else
+      redirect '/hug'
+    end
+  end
+
+  post '/bear_hug' do
+    @game = $game
+    @game.attach.bear_hug(@game.the_other_player)
+    if @game.game_over?
+      redirect '/lose'
+    else
+      redirect '/hug'
+    end
+  end
+
+  post '/squeeze' do
+    @game = $game
+    @game.attach.squeeze(@game.the_other_player)
+    if @game.game_over?
+      redirect '/lose'
+    else
+      redirect '/hug'
+    end
+  end
+
+  post '/hover_hug' do
+    @game = $game
+    @game.attach.hover_hug(@game.the_other_player)
+    if @game.game_over?
+      redirect '/lose'
+    else
+      redirect '/hug'
+    end
+  end
+
+  post '/soothing_embrace' do
+    @game = $game
+    @game.attach.soothing_embrace(@game.the_other_player)
+    if @game.game_over?
+      redirect '/lose'
+    else
+      redirect '/hug'
+    end
+  end
+
+  post '/self_hug' do
+    @game = $game
+    @game.attach.self_hug(@game.the_other_player)
     if @game.game_over?
       redirect '/lose'
     else
