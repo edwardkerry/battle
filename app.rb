@@ -16,7 +16,6 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    p params
     player1 = Player.new(params[:player1])
     params[:player2] = 'Meccahugger' if params[:player2] == ''
     player2 = Player.new(params[:player2])

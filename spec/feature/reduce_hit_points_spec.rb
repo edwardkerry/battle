@@ -1,6 +1,6 @@
-#require '../../app.rb'
+require_relative '../../app.rb'
 
-#Capybara.default_driver= :selenium
+Capybara.default_driver = :selenium
 
 
 describe 'feature test' do

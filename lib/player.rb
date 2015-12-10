@@ -11,7 +11,6 @@ class Player
   end
 
   def reduce_hug_points
-    binding.pry
     @hug_points -= Kernel.rand(20)
   end
 
