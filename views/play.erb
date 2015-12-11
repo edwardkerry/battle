@@ -1,18 +1,15 @@
-<%if @game.active_player == @game.player1%>
-  <h1><%= @game.name1 %> vs. <%= @game.name2 %></h1>
-  <p><%= @game.name2 %> HP: <%= @game.hp2 %></p>
-  <p><%= @game.name1 %> HP: <%= @game.hp1 %></p>
-  <form action='/attack2' method='post'><input type="submit" value="Attack <%= @game.name2 %>"/></form>
-  <% if @last_action == :attack %>
-    <%= @game.name2 %> attacks <%= @game.name1 %>
-  <% end %>
+<h1><%= @game.name1 %> vs. <%= @game.name2 %></h1>
+<p><%= @game.name1 %> HP: <%= @game.hp1 %></p>
+<p><%= @game.name2 %> HP: <%= @game.hp2 %></p>
 
-<%else%>
-  <h1><%= @game.name2 %> vs. <%= @game.name1 %></h1>
-  <p><%= @game.name1 %> HP: <%= @game.hp1 %></p>
-  <p><%= @game.name2 %> HP: <%= @game.hp2 %></p>
-  <form action='/attack1' method='post'><input type="submit" value="Attack <%= @game.name1 %>"/></form>
+<% if @game.active_player == @game.player1 %>
+<form action='/attack' method='post'><input type="submit" value="Attack <%= @game.name2 %>"/></form>
   <% if @last_action == :attack %>
-    <%= @game.name1 %> attacks <%= @game.name2 %>
+    <p><%= @game.name1 %>, fight back! Attack <%= @game.name2 %>!</p>
+  <% else %>
+    <p><%= @game.name1 %>, get ready to attack <%= @game.name2 %>!</p>
   <% end %>
-<%end%>
+<% else %>
+  <form action='/attack' method='post'><input type="submit" value="Attack <%= @game.name1 %>"/></form>
+  <p><%= @game.name2 %>, fight back! Attack <%= @game.name1 %>!</p>
+<% end %>

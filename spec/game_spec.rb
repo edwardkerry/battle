@@ -4,7 +4,7 @@ describe Game do
 
   subject(:game) { described_class.new(player1, player2) }
   let(:player1) { double(:player, name: "Michael", hp: 100) }
-  let(:player2) { double(:player, name: "Ed", hp: 98) }
+  let(:player2) { double(:player, name: "Ed", hp: 0) }
 
   describe '#player1' do
     it 'should return player 1' do
@@ -52,7 +52,7 @@ describe Game do
 
   describe '#hp2' do
     it 'should return player2\'s current HP' do
-      expect(game.hp2).to eq 98
+      expect(game.hp2).to eq 0
     end
   end
 
@@ -66,6 +66,17 @@ describe Game do
     it 'should switch active player on turn end' do
       game.switch_turn
       expect(game.active_player).to eq player2
+    end
+    it 'should switch inactive player on turn end' do
+      game.switch_turn
+      expect(game.inactive_player).to eq player1
+    end
+
+  end
+
+  describe '#game_over' do
+    it 'should know when a player is down' do
+      expect(game.game_over).to eq true
     end
   end
 
